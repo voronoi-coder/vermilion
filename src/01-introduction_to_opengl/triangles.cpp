@@ -103,7 +103,7 @@ void display()
     static const float black[] = { 0.0f, 0.0f, 0.0f, 0.0f };
     glClearBufferfv(GL_COLOR, 0, black);
 
-    glBindVertexArray( VAOs[Triangles] );
+    glBindVertexArray(VAOs[Triangles]);
     glDrawArrays( GL_TRIANGLES, 0, NumVertices );
 }
 
