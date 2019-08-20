@@ -15,7 +15,7 @@ add_executable(drawcommands src/03-drawing_with_opengl/drawcommands.cpp deps/gla
 
 target_include_directories(triangles PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include)
 target_link_libraries(triangles glfw)
-target_include_directories(drawcommands PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include)
+target_include_directories(drawcommands PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include include)
 target_link_libraries(drawcommands glfw)
 target_include_directories(uniform_block PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include)
 target_link_libraries(uniform_block glfw)
