@@ -12,6 +12,7 @@ add_executable(triangles src/01-introduction_to_opengl/triangles.cpp deps/glad/s
 add_executable(uniform_block src/02-shader_fundamentals/uniform_block.cpp deps/glad/src/glad.c)
 
 add_executable(drawcommands src/03-drawing_with_opengl/drawcommands.cpp deps/glad/src/glad.c)
+add_executable(primitiverestart src/03-drawing_with_opengl/primitiverestart.cpp deps/glad/src/glad.c)
 
 target_include_directories(triangles PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include)
 target_link_libraries(triangles glfw)
@@ -19,3 +20,5 @@ target_include_directories(drawcommands PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/inc
 target_link_libraries(drawcommands glfw)
 target_include_directories(uniform_block PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include)
 target_link_libraries(uniform_block glfw)
+target_include_directories(primitiverestart PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include include)
+target_link_libraries(primitiverestart glfw)

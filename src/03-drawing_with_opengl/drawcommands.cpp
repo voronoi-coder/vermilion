@@ -26,7 +26,7 @@ static const GLchar *readShader(const char * filename){
     fclose(infile);
     source[len] = 0;
 
-    return source;
+    return const_cast<const GLchar *>(source);
 }
 
 float aspect;
@@ -84,6 +84,7 @@ int main() {
 
     model_matrix_loc = glGetUniformLocation(program, "model_matrix");
     projection_matrix_loc = glGetUniformLocation(program, "projection_matrix");
+    // std::cout << "model_matrix_loc, projection_matrix_loc: " << model_matrix_loc << ", " << projection_matrix_loc << std::endl;
 
     // A single triangle
     static const GLfloat vertex_position[] = {
