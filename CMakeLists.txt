@@ -7,12 +7,17 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(glfw3 3.3 REQUIRED)
 
+# 01
 add_executable(triangles src/01-introduction_to_opengl/triangles.cpp deps/glad/src/glad.c)
 
+# 02
 add_executable(uniform_block src/02-shader_fundamentals/uniform_block.cpp deps/glad/src/glad.c)
 
+# 03
 add_executable(drawcommands src/03-drawing_with_opengl/drawcommands.cpp deps/glad/src/glad.c)
 add_executable(primitiverestart src/03-drawing_with_opengl/primitiverestart.cpp deps/glad/src/glad.c)
+add_executable(instancing src/03-drawing_with_opengl/instancing.cpp
+    deps/glad/src/glad.c deps/vbm.cpp)
 
 target_include_directories(triangles PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include)
 target_link_libraries(triangles glfw)
@@ -22,3 +27,6 @@ target_include_directories(uniform_block PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/in
 target_link_libraries(uniform_block glfw)
 target_include_directories(primitiverestart PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include include)
 target_link_libraries(primitiverestart glfw)
+target_include_directories(instancing PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include ${CMAKE_SOURCE_DIR}/deps include)
+target_link_libraries(instancing glfw)
+
