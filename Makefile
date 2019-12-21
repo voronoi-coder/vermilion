@@ -11,3 +11,7 @@ $(COMPILE_COMMANDS): CMakeLists.txt
 run-target: $(COMPILE_COMMANDS)
 	cmake --build build --target $(target)
 	./build/$(target)
+
+.PHONY: compile_commands
+compile_commands:
+	cp -rf ./build/compile_commands.json ./

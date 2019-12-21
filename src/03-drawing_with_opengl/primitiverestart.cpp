@@ -147,14 +147,12 @@ void display() {
     static const vmath::vec3 Y(0.0f, 1.0f, 0.0f);
     static const vmath::vec3 Z(0.0f, 0.0f, 1.0f);
 
-    // glEnable(GL_CULL_FACE);
-    glEnable(GL_DEPTH_TEST);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glUseProgram(program);
 
-    vmath::mat4 model_matrix(vmath::translate(0.0f, 0.0f, -5.0f) * vmath::rotate(t * 360.0f, Y) * vmath::rotate(t * 720.0f, Z));
+    vmath::mat4 model_matrix(vmath::translate(0.0f, 0.0f, -4.0f) * vmath::rotate(t * 360.0f, Y) * vmath::rotate(t * 720.0f, Z));
     vmath::mat4 projection_matrix(vmath::frustum(-1.0f, 1.0f, -aspect, aspect, 1.0f, 500.0f));
 
     glUniformMatrix4fv(model_matrix_loc, 1, GL_FALSE, model_matrix);
@@ -187,6 +185,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+    // glfwWindowHint(GLFW_SAMPLES, 4);
 
     GLFWwindow *window = glfwCreateWindow(800, 600, "primitive restart", NULL, NULL);
     glfwSetWindowSizeCallback(window, size_callback);
@@ -200,6 +199,10 @@ int main() {
     aspect = 600.0f / 800.0f;
 
     init();
+
+    // glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
+    // glEnable(GL_MULTISAMPLE);
 
     while(!glfwWindowShouldClose(window)) {
         display();

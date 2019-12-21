@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <targa.h>
 #include <vmath.h>
+#include <readShader.hpp>
 
 #include <iostream>
 
@@ -12,22 +13,6 @@ static void error_callback(int code, const char *description) {
     std::cerr <<"Error: " << description <<std::endl;
 }
 
-static const GLchar *readShader(const char *fn) {
-    FILE *infile = fopen(fn, "rb");
-    if(!infile) {
-        std::cerr << "Unable to open file:" << fn <<"; errno:" << errno <<std::endl;
-        return NULL;
-    }
-    fseek(infile, 0, SEEK_END);
-    int len = ftell(infile);
-    fseek(infile, 0, SEEK_SET);
-
-    GLchar *source = new GLchar[len + 1];
-    fread(source, 1, len, infile);
-    source[len] = 0;
-
-    return const_cast<const GLchar *>(source);
-}
 
 #define POINT_COUNT 4
 

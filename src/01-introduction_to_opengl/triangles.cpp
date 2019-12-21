@@ -127,6 +127,9 @@ int main(int argc, char** argv) {
     // not support opengl 4.5
     init();
 
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // glad_glPointSize(64);
+
     while(!glfwWindowShouldClose(window)) {
         display();
         glfwSwapBuffers(window);

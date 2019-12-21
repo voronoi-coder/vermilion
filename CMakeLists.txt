@@ -4,8 +4,12 @@ project(vermilion VERSION 9.0.0 LANGUAGES CXX C)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_BUILD_TYPE Debug)
+
+configure_file(configuration/root_directory.hpp.in configuration/root_directory.hpp)
 
 find_package(glfw3 3.3 REQUIRED)
+find_package(glm)
 
 # 01
 add_executable(triangles src/01-introduction_to_opengl/triangles.cpp deps/glad/src/glad.c)
@@ -20,7 +24,19 @@ add_executable(instancing src/03-drawing_with_opengl/instancing.cpp deps/glad/sr
 add_executable(instancing2 src/03-drawing_with_opengl/instancing2.cpp deps/glad/src/glad.c deps/vbm.cpp)
 add_executable(instancing3 src/03-drawing_with_opengl/instancing3.cpp deps/glad/src/glad.c deps/vbm.cpp)
 add_executable(pointsprites src/03-drawing_with_opengl/pointsprites.cpp
-    deps/glad/src/glad.c deps/targa.cpp)
+    deps/glad/src/glad.c deps/targa.cpp deps/readShader.cpp)
+
+# 04
+add_executable(multisample
+    src/04-color_pixels_fragments/anti_aliasing_multisampling.cpp
+    deps/glad/src/glad.c)
+add_executable(offscreenMSAA
+    src/04-color_pixels_fragments/offscreen_multisample.cpp
+    deps/glad/src/glad.c
+    )
+# 05
+add_executable(xfb src/05-viewing_transformation/xfb.cpp deps/glad/src/glad.c
+    deps/vbm.cpp)
 
 target_include_directories(triangles PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include)
 target_link_libraries(triangles glfw)
@@ -38,3 +54,19 @@ target_include_directories(instancing3 PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/incl
 target_link_libraries(instancing3 glfw)
 target_include_directories(pointsprites PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include ${CMAKE_SOURCE_DIR}/deps include)
 target_link_libraries(pointsprites glfw)
+target_include_directories(multisample PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include ${CMAKE_SOURCE_DIR}/deps include)
+target_include_directories(offscreenMSAA PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include ${CMAKE_SOURCE_DIR}/deps include)
+target_include_directories(xfb PUBLIC ${CMAKE_SOURCE_DIR}/deps/glad/include ${CMAKE_SOURCE_DIR}/deps include)
+target_link_libraries(offscreenMSAA glfw glm)
+target_link_libraries(multisample glfw glm)
+target_link_libraries(xfb glfw glm)
+
+include_directories(deps/glad/include)
+include_directories(include)
+# 06
+add_executable(texturewrapping ./src/06-Textures_And_Framebuffers/texturewrapping.cpp
+    deps/glad/src/glad.c deps/vermilion.cpp deps/v_loadtexture.cpp)
+add_executable(multitexture ./src/06-Textures_And_Framebuffers/multitexture.cpp
+    deps/glad/src/glad.c deps/vermilion.cpp deps/v_loadtexture.cpp)
+target_link_libraries(texturewrapping glfw glm)
+target_link_libraries(multitexture glfw glm)
