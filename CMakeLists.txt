@@ -62,11 +62,20 @@ target_link_libraries(multisample glfw glm)
 target_link_libraries(xfb glfw glm)
 
 include_directories(deps/glad/include)
+include_directories(deps)
 include_directories(include)
 # 06
 add_executable(texturewrapping ./src/06-Textures_And_Framebuffers/texturewrapping.cpp
     deps/glad/src/glad.c deps/vermilion.cpp deps/v_loadtexture.cpp)
 add_executable(multitexture ./src/06-Textures_And_Framebuffers/multitexture.cpp
     deps/glad/src/glad.c deps/vermilion.cpp deps/v_loadtexture.cpp)
+add_executable(volumetexturing
+    ./src/06-Textures_And_Framebuffers/volumetexturing.cpp deps/glad/src/glad.c
+    deps/vermilion.cpp deps/v_loadtexture.cpp)
+add_executable(cubemap
+    ./src/06-Textures_And_Framebuffers/cubemap.cpp deps/glad/src/glad.c
+    deps/vermilion.cpp deps/v_loadtexture.cpp deps/vbm.cpp)
 target_link_libraries(texturewrapping glfw glm)
 target_link_libraries(multitexture glfw glm)
+target_link_libraries(volumetexturing glfw glm)
+target_link_libraries(cubemap glfw glm)

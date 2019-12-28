@@ -12,6 +12,6 @@ void main() {
     mat2 m = mat2( vec2(cos(time), sin(time)),
             vec2(-sin(time), cos(time)));
     gl_Position = vec4(in_position, 0.5, 1.0);
-    tex_coord0 = in_tex_coord;
-    tex_coord1 = in_tex_coord;
+    tex_coord0 = in_tex_coord * m;
+    tex_coord1 = in_tex_coord * transpose(m);
 }
