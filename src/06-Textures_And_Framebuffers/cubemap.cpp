@@ -103,7 +103,7 @@ int main() {
         auto rotate_matrix = glm::rotate(glm::mat4(), t * 137.0f, glm::vec3(0.0f, 1.0f, 0.0f));
         auto tc_matrix = glm::perspective(45.f, 1.0f / aspect, 0.1f, 500.f) *
                          camera.GetViewMatrix() 
-                         // * rotate_matrix 
+                         * rotate_matrix 
                          ;
         shader.setMat4("tc_rotate", tc_matrix);
 

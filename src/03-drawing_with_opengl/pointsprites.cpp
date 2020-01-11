@@ -14,7 +14,7 @@ static void error_callback(int code, const char *description) {
 }
 
 
-#define POINT_COUNT 4
+#define POINT_COUNT 400
 
 float aspect;
 GLuint sprite_texture;

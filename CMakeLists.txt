@@ -75,7 +75,15 @@ add_executable(volumetexturing
 add_executable(cubemap
     ./src/06-Textures_And_Framebuffers/cubemap.cpp deps/glad/src/glad.c
     deps/vermilion.cpp deps/v_loadtexture.cpp deps/vbm.cpp)
+add_executable(texturedpointsprites
+    ./src/06-Textures_And_Framebuffers/texturedpointsprites.cpp deps/glad/src/glad.c
+    deps/vermilion.cpp deps/v_loadtexture.cpp deps/targa.cpp)
+add_executable(mipmap
+    ./src/06-Textures_And_Framebuffers/mipmap.cpp deps/glad/src/glad.c
+    deps/vermilion.cpp deps/v_loadtexture.cpp)
 target_link_libraries(texturewrapping glfw glm)
 target_link_libraries(multitexture glfw glm)
-target_link_libraries(volumetexturing glfw glm)
 target_link_libraries(cubemap glfw glm)
+target_link_libraries(volumetexturing glfw glm)
+target_link_libraries(texturedpointsprites glfw glm)
+target_link_libraries(mipmap glfw glm)
